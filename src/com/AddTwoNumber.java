@@ -6,6 +6,7 @@ public class AddTwoNumber {
 
     /**
      * 将两个链表表示的数相加，并将结果表示为链表的形式
+     * hehe
      */
     public static void main(String[] args) {
         ListNode l1=new ListNode(1);
