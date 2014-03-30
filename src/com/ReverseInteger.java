@@ -19,4 +19,23 @@ public class ReverseInteger {
         System.out.println("翻转后："+res);
         return res;
     }
+    public static int reverse1(int x) {
+        String s=Integer.toString(x);
+        StringBuilder sBuilder=new StringBuilder();
+        if(s.startsWith("-")){
+        	String[] arr=s.split("");//注意：划分后，第一个字符时""！！！！！
+        	for(int i=arr.length-1;i>1;i--){
+        		sBuilder.append(arr[i]);
+        	}
+        	System.out.println(sBuilder.toString());
+        	
+        	return 0-Integer.valueOf(sBuilder.toString());
+        }else{
+        	String[] arr=s.split("");
+        	for(int i=arr.length-1;i>0;i--){
+        		sBuilder.append(arr[i]);
+        	}
+        	return Integer.valueOf(sBuilder.toString()); 
+        }
+    }
 }
