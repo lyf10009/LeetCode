@@ -2,6 +2,7 @@ package com;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.bean.ListNode;
 
 public class RemoveDuplicates {
 
@@ -36,23 +37,6 @@ public class RemoveDuplicates {
             head=head.next;  
         }
         return res.next;
-//        if(head==null) return null;
-//        ListNode res=new ListNode(head.val);
-//        ListNode cur=res;
-//        Map<Integer,Integer> map=new HashMap<Integer,Integer>();
-//        map.put(head.val,1);
-//        head=head.next;
-//        while(head!=null){
-//        	int val=head.val;
-//        	if(map.get(val)==null){
-//        		cur.next=new ListNode(head.val);
-//        		
-//        		cur=cur.next;
-//        		map.put(val,1);
-//        	}
-//        	head=head.next;  
-//        }
-//        return res;
     }
 	public static void printListNode(ListNode l1){
 		if(l1==null) return;
