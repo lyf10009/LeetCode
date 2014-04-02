@@ -6,7 +6,7 @@ import java.util.List;
 public class BestTimetoBuyandSellStock {
 
     public static void main(String[] args) {
-        int[] prices = {1,2,4,2,5,7,2,4,9,0};
+        int[] prices = {1,2,4,2,5,7,2,4,9,0,2,5};
         System.out.println(maxProfit1(prices));
         System.out.println(maxProfit2(prices));
         System.out.println(maxProfit3(prices));
