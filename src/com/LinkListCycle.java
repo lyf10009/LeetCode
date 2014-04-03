@@ -22,7 +22,6 @@ public class LinkListCycle {
             if(fast==null || fast.next==null || slow==null){  
                 return false;  
             }  
-               
             fast = fast.next.next;  
             slow = slow.next;  
                
