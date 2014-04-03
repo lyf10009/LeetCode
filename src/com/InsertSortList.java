@@ -6,8 +6,7 @@ public class InsertSortList {
 
     /**
      * 单链表的插入排序
-     * 
-     * @param args
+     * 每次处理就是将无序数列的第一个元素与有序数列的元素从后往前逐个进行比较，找出插入位置，将该元素插入到有序数列的合适位置中。
      */
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
