@@ -1,4 +1,4 @@
-package com;
+package com.list;
 
 import com.bean.ListNode;
 

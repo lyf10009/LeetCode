@@ -1,4 +1,4 @@
-package com;
+package com.tree;
 
 import java.util.ArrayList;
 import java.util.Stack;

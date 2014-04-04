@@ -1,4 +1,4 @@
-package com;
+package com.str;
 
 public class LongestPalindromicSubstring {
 

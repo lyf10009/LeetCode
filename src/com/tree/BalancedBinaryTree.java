@@ -1,4 +1,4 @@
-package com;
+package com.tree;
 
 import com.bean.TreeNode;
 
