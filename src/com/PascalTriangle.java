@@ -9,7 +9,9 @@ public class PascalTriangle {
      */
     public static void main(String[] args) {
         int i=5;
+        System.out.println((i+1)+"½×Ñî»ÔÈý½Ç");
         generate(i);
+        System.out.println("\nµÚ"+(i+1)+"ÐÐ£º"+getRow(i));
     }
     public static ArrayList<ArrayList<Integer>> generate(int numRows) {
         ArrayList<ArrayList<Integer>> res=new ArrayList<ArrayList<Integer>>();
@@ -21,6 +23,14 @@ public class PascalTriangle {
             System.out.println(tmpList.toString());
             res.add(tmpList);
         }
+        return res;
+    }
+    public static ArrayList<Integer> getRow(int rowIndex) {
+        ArrayList<Integer> res=new ArrayList<Integer>();
+        for(int i=0;i<rowIndex+1;i++){
+            res.add(getInt(rowIndex, i));
+        }
+        System.out.println(res.toString());
         return res;
     }
     public static int getInt(int n,int m){
