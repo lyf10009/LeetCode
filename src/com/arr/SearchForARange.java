@@ -15,27 +15,7 @@ public class SearchForARange {
     public static void main(String[] args) {
         int[] A={5,5,5,5,5,5};
         int target=5;
-        System.out.println("searchRange£º"+Arrays.toString(searchRange(A, target)));
         System.out.println("searchRange1£º"+Arrays.toString(searchRange1(A, target)));
-    }
-    
-    public static int[] searchRange(int[] A, int target) {
-        int[] res={-1,-1};
-        int start=0,end=A.length-1;
-        while(start<=end){
-            int mid = (start+end)/2;
-            if(A[mid]==target){
-                res[0]=res[0]==-1?mid:res[0]<mid?res[0]:mid;
-                res[1]=res[1]==-1?mid:res[1]>mid?res[1]:mid;
-                
-            }
-            if(A[mid]<target){
-                start = mid+1;
-            }else{
-                end = mid-1;
-            }
-        }
-        return res;
     }
     
     public static int[] searchRange1(int[] A, int target) {  

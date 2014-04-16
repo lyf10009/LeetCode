@@ -1,5 +1,7 @@
 package com.list;
 
+import java.util.ArrayList;
+
 import com.bean.ListNode;
 
 public class MergeList {
@@ -58,6 +60,7 @@ public class MergeList {
         }
         return res.next;
     }
+    
     public static ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
         ListNode res= new ListNode(0);
         ListNode cur= res;
@@ -73,5 +76,14 @@ public class MergeList {
         }
         cur.next=l1!=null?l1:l2;
         return res.next;
+    }
+    
+    public static ListNode mergeKLists(ArrayList<ListNode> lists) {
+        if(lists==null || lists.size()<=0) return null;
+        ListNode start = lists.get(0);
+        for(int i=1;i<lists.size();i++){
+            start=mergeTwoLists1(start,lists.get(i));
+        }
+        return start;
     }
 }
