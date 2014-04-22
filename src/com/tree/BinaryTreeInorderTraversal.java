@@ -17,12 +17,15 @@ public class BinaryTreeInorderTraversal {
         TreeNode tree5=new TreeNode(5);
         TreeNode tree6=new TreeNode(6);
         TreeNode tree7=new TreeNode(7);
+        TreeNode tree8=new TreeNode(8);
+        
         
         tree1.left=tree2;
         tree1.right=tree5;
         tree2.left=tree3;
         tree2.right=tree7;
         tree3.right=tree4;
+        tree4.left=tree8;
         tree5.right=tree6;
         
         System.out.println("µÝ¹é·½·¨£º"+inorderTraversal(tree1).toString());
@@ -48,7 +51,7 @@ public class BinaryTreeInorderTraversal {
                 TreeNode tmp=st.pop();
                 res.add(tmp.val);
                 if(tmp.right!=null){
-                    st.push(tmp.right);
+                    root=tmp.right;
                 }
             }
         }
