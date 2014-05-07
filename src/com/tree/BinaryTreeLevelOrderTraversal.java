@@ -1,22 +1,14 @@
 package com.tree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
-
-import com.bean.TreeLinkNode;
 import com.bean.TreeNode;
 
 public class BinaryTreeLevelOrderTraversal {
 
     /**Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
-     * For example:
-     * Given binary tree {3,9,20,#,#,15,7},
-     *         3
-     *        / \
-     *       9  20
-     *         /  \
-     *        15   7
      */
     public static void main(String[] args) {
         TreeNode t1=new TreeNode(1);
@@ -27,13 +19,21 @@ public class BinaryTreeLevelOrderTraversal {
         TreeNode t6=new TreeNode(6);
         TreeNode t7=new TreeNode(7);
         t1.left=t2;
-        t1.right=t3;
-        t2.left=t4;
-        t2.right=t5;
-        t3.right=t7;
+//        t1.right=t3;
+//        t2.left=t4;
+//        t2.right=t5;
+//        t3.right=t7;
         levelOrderI(t1);
+        zigzagLevelOrder(t1);
     }
     /**
+     * For example:
+     * Given binary tree {3,9,20,#,#,15,7},
+     *         3
+     *        / \
+     *       9  20
+     *         /  \
+     *        15   7
      * return its level order traversal as:
      * [
      *   [3],
@@ -67,6 +67,13 @@ public class BinaryTreeLevelOrderTraversal {
     
     
     /**
+     * For example:
+     * Given binary tree {3,9,20,#,#,15,7},
+     *         3
+     *        / \
+     *       9  20
+     *         /  \
+     *        15   7
      * return its level order traversal as:
      * [
      *   [15,7],
@@ -83,11 +90,46 @@ public class BinaryTreeLevelOrderTraversal {
         return re;
     }
     
-    public static ArrayList<ArrayList<Integer>> levelOrderII2(TreeNode root) {
+    /**
+     * Given a binary tree, return the zigzag level order traversal of its nodes' values. 
+     * (ie, from left to right, then right to left for the next level and alternate between).
+     * For example:
+     * Given binary tree {3,9,20,#,#,15,7},
+     *         3
+     *        / \
+     *       9  20
+     *         /  \
+     *        15   7
+     * return its level order traversal as:
+     * [
+     *   [3],
+     *   [20,9],
+     *   [15,7]
+     * ]
+     */
+    public static ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
         ArrayList<ArrayList<Integer>> list=new ArrayList<ArrayList<Integer>>();
         if(root==null) return list;
-        
-        
+        Queue<TreeNode> queue=new LinkedList<TreeNode>();
+        queue.offer(root);
+        int num=1;
+        int level=0;
+        ArrayList<Integer> hangList=new ArrayList<Integer>();
+        for(int i=0;i<num;i++){
+            TreeNode tmp = queue.poll();
+            hangList.add(tmp.val);
+            if(tmp.left!=null) queue.offer(tmp.left);
+            if(tmp.right!=null) queue.offer(tmp.right);
+            if(num-i==1){
+                num=queue.size();
+                if(level%2==1) Collections.reverse(hangList);
+                list.add(hangList);
+                hangList=new ArrayList<Integer>();
+                level++;
+                i=-1;
+            }
+        }
+        System.out.println(list);
         return list;
     }
 }
