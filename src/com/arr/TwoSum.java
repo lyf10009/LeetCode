@@ -1,5 +1,6 @@
 package com.arr;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,24 @@ public class TwoSum {
                 ret[1] = i + 1;
             } else {
                 ht.put(numbers[i], i);
+            }
+        }
+        return ret;
+    }
+
+    //升序数组的时候可用
+    public static int[] twoSum1(int[] numbers, int target) {
+        int[] ret = new int[2];
+        int start=0,end=numbers.length-1;
+        while(start<end){
+            if(numbers[start]+numbers[end]>target){
+                end--;
+            }else if(numbers[start]+numbers[end]<target){
+                start++;
+            }else{
+                ret[0]=start;
+                ret[1]=end;
+                return ret;
             }
         }
         return ret;

@@ -2,11 +2,6 @@ package com.arr;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Resource;
 
 public class ThreeSum {
 
@@ -22,33 +17,41 @@ public class ThreeSum {
      * @param args
      */
     public static void main(String[] args) {
-        int[] num={-1, 0, 1, 2, -1, -4};
+        int[] num={-2,0,0,2,2};
         System.out.println(threeSum(num));
     }
     
     
     public static ArrayList<ArrayList<Integer>> threeSum(int[] num) {
         ArrayList<ArrayList<Integer>> re=new ArrayList<ArrayList<Integer>>();
-        //HashMap用来存放数组的下标和对应的值
-        Map<Integer, Integer> ht = new HashMap<Integer, Integer>();
         //给数组排序
         Arrays.sort(num);
         
-        ArrayList<Integer> tmp=new ArrayList<Integer>();
         for(int i=0;i<num.length;i++){
             int one=num[i];
-            if(one>-1) break;
-            tmp.add(one);
-            for(int j=i+1;j<num.length;j++){
-                if(ht.get(-one-num[j])!= null) {
-                    tmp.add(-one-num[j]);
-                    tmp.add(num[j]);
-                    re.add(tmp);
-                } else {
-                    ht.put(num[j], j);
+            if(i>0 && one==num[i-1]) continue;
+            int p=i+1,q=num.length-1;
+            while (p < q) {
+                if (num[p] + num[q] < -num[i]) {  
+                    p++;  
+                } else if (num[p] + num[q] > -num[i]){  
+                    q--;  
+                } else if (num[p] + num[q] == -num[i]) {  
+                    ArrayList<Integer> tmpList = new ArrayList<Integer>();  
+                    tmpList.add(num[i]);  
+                    tmpList.add(num[p]);  
+                    tmpList.add(num[q]);  
+                    re.add(tmpList);  
+                    p++;  
+                    q--;  
+                    while (p < q && num[p] == num[p - 1]) {  
+                        p++;  
+                    }  
+                    while (p < q && num[q] == num[q + 1]) {  
+                        q--;  
+                    }  
                 }
-            }
-            tmp.clear();
+            }  
         }
         return re;
     }

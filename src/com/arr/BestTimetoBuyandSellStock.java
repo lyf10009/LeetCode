@@ -1,8 +1,5 @@
 package com.arr;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BestTimetoBuyandSellStock {
 
     public static void main(String[] args) {
