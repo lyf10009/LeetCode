@@ -21,7 +21,6 @@ public class ThreeSum {
         System.out.println(threeSum(num));
     }
     
-    
     public static ArrayList<ArrayList<Integer>> threeSum(int[] num) {
         ArrayList<ArrayList<Integer>> re=new ArrayList<ArrayList<Integer>>();
         //¸øÊı×éÅÅĞò
