@@ -68,6 +68,4 @@ public class GenerateParentheses {
             sBuilder.deleteCharAt(sBuilder.length()-1);
         }
     }
-
-    
 }

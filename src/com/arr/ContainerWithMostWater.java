@@ -29,7 +29,6 @@ public class ContainerWithMostWater {
     }
     /**
      * ¶Ì°å³¤°å
-     * 
      */
     public static int maxArea1(int[] height) {
         int area=0;
