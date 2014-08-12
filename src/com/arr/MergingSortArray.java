@@ -10,15 +10,18 @@ public class MergingSortArray {
     public static void main(String[] args) {
         int[] num={5,1,2,6,9,8,3,4,7};
         MergingSortArray sort = new MergingSortArray();
-        sort.mergeSort(num);
+        System.out.println(Arrays.toString(num));
+//        sort.mergeSort1(num);
+        sort.mergeSort2(num);
         System.out.println(Arrays.toString(num));
     }
     //µÝ¹é
-    public void mergeSort(int[] num){
+    public void mergeSort1(int[] num){
         mSort(num,num,0,num.length-1);
     }
     private void mSort(int[] sr,int[] tr, int s,int t){
-        int[] tr2 = new int[10];
+        int len = tr.length;
+        int[] tr2 = new int[len];
         if(s==t){
             tr[s]=sr[s];
         }else{
@@ -40,14 +43,45 @@ public class MergingSortArray {
             }
         }
         if(s<=m){
-            tr[j]=sr[s];
+            for(;s<=m;){
+                tr[j]=sr[s];
+                j++;
+                s++;
+            }
         }
         if(i<=t){
-            tr[j]=sr[i];
+            for(;i<=t;){
+                tr[j]=sr[i];
+                j++;
+                i++;
+            }
         }
     }
     
-    
     //µü´ú
-    
+    public void mergeSort2(int[] num){
+        int k=1;
+        int len = num.length;
+        int[] tr = new int[len];
+        while(k<len){
+            mergePass(num,tr,k,len-1);
+            k*=2;
+            mergePass(tr,num,k,len-1);
+            k*=2;
+        }
+    }
+    private void mergePass(int[] sr,int[] tr,int m,int n){
+        int i=0;
+        while(i<=n-2*m){
+            merge(sr, tr, i, i+m-1,i+2*m-1);
+            i+=2*m;
+        }
+        if(i<=n-m){
+            merge(sr, tr, i, i+m-1, n);
+        }else{
+            for(int j=i;j<=n;j++){
+                tr[j]=sr[j];
+            }
+        }
+    }
 }
