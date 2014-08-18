@@ -35,12 +35,20 @@ public class BalancedBinaryTree {
         int right1=getDepth(root.right);
         if(Math.abs(left1-right1)>1) return false;
 
-        boolean left=isBalanced(root.left);
-        if(!left) return false;
-        boolean right=isBalanced(root.right);
-        if(!right) return false;
-        return true;
+        return isBalanced(root.left) && isBalanced(root.right);
     }
+    
+    public static boolean isBalanced1(TreeNode root) {
+        if(root==null) return true;
+        if(isBalanced(root.left) && isBalanced(root.right)){
+            int left1=getDepth(root.left);
+            int right1=getDepth(root.right);
+            
+            return Math.abs(left1-right1)<2;
+        }
+        return false;
+    }
+    
     public static int getDepth(TreeNode root){
         if(root==null) return 0;
         return Math.max(getDepth(root.left), getDepth(root.right))+1;
