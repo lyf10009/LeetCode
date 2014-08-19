@@ -13,16 +13,16 @@ public class ValidNumber {
      * You should gather all requirements up front before implementing one.
      */
     public static void main(String[] args) {
-        String s="2e10";
+        String s=".2";
         System.out.println(isNumber(s));
     }
     
     //利用正则表达式
     public static boolean isNumber(String s) {
         if(s.trim().isEmpty()){  
-            return false;  
-        }  
-        String regex = "[-+]?(\\d+\\.?|\\.\\d+)\\d*(e[-+]?\\d+)?";  
+            return false;
+        }
+        String regex = "[-+]?(\\d+\\.?|\\.\\d+)\\d*(e[-+]?\\d+)?";
         if(s.trim().matches(regex)){  
             return true;  
         }else{  
