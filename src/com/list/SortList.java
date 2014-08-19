@@ -5,7 +5,8 @@ import com.bean.ListNode;
 public class SortList {
 
     /**
-     * Sort a linked list in O(n log n) time using constant space complexity.
+     * Sort a linked list in O(nlogn) time using constant space complexity.
+     * 链表的归并排序
      */
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
@@ -26,14 +27,14 @@ public class SortList {
 
     public static ListNode sortList(ListNode head){
         if(head==null || head.next==null) return head;
-        ListNode p=head,q=head;
+        ListNode p=head,q=head;//通过快慢指针，将链表分成两段
         ListNode pre=p;
         while(q!=null && q.next!=null){
             q=q.next.next;
             pre=p;
             p=p.next;
         }
-        pre.next=null;
+        pre.next=null;//将链表截断，p 是新表头
         return merge(sortList(head),sortList(p));
     }
     public static ListNode merge(ListNode h1,ListNode h2){

@@ -1,15 +1,9 @@
 package com.list;
 
-import javax.swing.text.DefaultEditorKit.CutAction;
-
 import com.bean.ListNode;
 
 public class ReverseList {
 
-    /**
-     * 翻转链表
-     * @param args
-     */
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
@@ -21,11 +15,20 @@ public class ReverseList {
         l3.next = l4;
         l4.next = l5;
         ListNode.printListNode(l1);
-//        ListNode.printListNode(reverseList(l1));
-        int m=1,n=3;
+        ListNode.printListNode(reverseList1(l1));
+        
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
+        l5.next=null;
+        int m=1,n=3;//翻转区域的起点和终点。序号从1开始
         ListNode.printListNode(reverseListII(l1,m,n));
     }
     
+    /**
+     * 翻转链表
+     */
     public static ListNode reverseList(ListNode head){
         ListNode pre=head.next;
         ListNode cur=head.next;
@@ -37,6 +40,20 @@ public class ReverseList {
             pre=cur;
         }
         return head;
+    }
+    public static ListNode reverseList1(ListNode head){
+        ListNode newHead=null;
+        ListNode cur=head,pre=null;
+        while(cur!=null){
+            ListNode next=cur.next;
+            if(next==null){
+                newHead=cur;
+            }
+            cur.next=pre;
+            pre=cur;
+            cur=next;
+        }
+        return newHead;
     }
     
     /**

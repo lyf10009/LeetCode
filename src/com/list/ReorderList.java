@@ -33,6 +33,8 @@ public class ReorderList {
         reorderListII(l1);
         ListNode.printListNode(l1);
     }
+    
+    //改变链表节点的值
     public static void reorderListI(ListNode head) {
         if(!(head!=null && head.next!=null && head.next.next!=null)) return;
         ListNode cur = head;

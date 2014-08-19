@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import com.bean.ListNode;
 
 public class MergeList {
-
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         ListNode l1=new ListNode(1);
         ListNode l2=new ListNode(1);
@@ -25,13 +21,12 @@ public class MergeList {
         System.out.println("排序后：");
         ListNode.printListNode(mergeTwoLists(l1,l4));
         ListNode.printListNode(mergeTwoLists1(l1,l4));
-
     }
     /**
      * Merge two sorted linked lists and return it as a new list. 
      * The new list should be made by splicing together the nodes of the first two lists.
+     * 将两个有序链表合并插入到一个链表中
      */
-    //将l1、l2插入一个新链表中
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1==null) return l2;
         if(l2==null) return l1;

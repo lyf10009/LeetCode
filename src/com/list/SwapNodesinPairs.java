@@ -8,6 +8,8 @@ public class SwapNodesinPairs {
      *  For example, Given 1->2->3->4, you should return the list as 2->1->4->3. 
      *  Your algorithm should use only constant space.
      *  You may not modify the values in the list, only nodes itself can be changed.
+     *  
+     *  相当于ReverseNodesinkGroup k=2
      */
     
     public static void main(String[] args) {
@@ -20,8 +22,7 @@ public class SwapNodesinPairs {
         l3.next = l4;
         ListNode.printListNode(l1);
         
-        ListNode res = swapPairs(l1);
-        ListNode res1 = swapPairs1(l1);
+        ListNode res = swapPairs1(l1);
         ListNode.printListNode(res);
     }
     //将原链表插入新链表
@@ -44,7 +45,7 @@ public class SwapNodesinPairs {
     public static ListNode swapPairs1(ListNode head) {
         ListNode cur = null, next = null, tmp = null, pre = null;  
         cur = head;  
-        if(cur != null && cur.next != null)  head = cur.next;  
+        if(head != null && head.next != null)  head = cur.next;  
         while(cur != null && cur.next != null){  
             next = cur.next;  
             if(pre != null)  
@@ -53,7 +54,7 @@ public class SwapNodesinPairs {
             next.next = cur;  
             cur.next = tmp;  
             pre = cur;  
-            cur = cur.next;  
+            cur = tmp;  
         }  
         return head;  
     }

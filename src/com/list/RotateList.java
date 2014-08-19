@@ -8,6 +8,9 @@ public class RotateList {
      * For example:
      * Given 1->2->3->4->5->NULL and k = 2,
      * return 4->5->1->2->3->NULL.
+     * 
+     * 注意一点，K可能非常大，比链表的长度大得多，但是因为是循环右移，
+     * 所以实际上只要循环右移K%Length位(Length为链表长度)
      */
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
@@ -20,9 +23,10 @@ public class RotateList {
         l3.next = l4;
         l4.next = l5;
         ListNode.printListNode(l1);
-        ListNode.printListNode(rotateRight1(l1,6));
+        ListNode.printListNode(rotateRight2(l1,6));
     }
-    //当n不大于链表长度时
+    //当n不大于链表长度时，通过。
+    //当n>length时，不通过，没有循环右移
     public static ListNode rotateRight(ListNode head, int n) {
         if(head==null) return head;
         ListNode cur = head;
@@ -44,6 +48,7 @@ public class RotateList {
     //注意一点，K可能非常大，比链表的长度大得多，但是因为是循环右移，所以实际上只要循环右移K%Length位(Length为链表长度)
     public static ListNode rotateRight1(ListNode head, int n) {
         if(head==null || head.next==null|| n==0) return head;
+        //先遍历一遍，得到链表长度，链表尾节点
         int length=0;
         ListNode cur=head,tail=head;
         while(cur!=null){
@@ -51,7 +56,8 @@ public class RotateList {
             tail=cur;
             cur=cur.next;
         }
-        n=n%length;
+        
+        n=n%length;//得到翻转的序号
         
         cur=head;
         for(int i=0;i<length-n-1;i++){
@@ -62,7 +68,6 @@ public class RotateList {
         cur.next=null;
         return head;
     }
-    
     
     public static ListNode rotateRight2(ListNode head, int n) {
         if(head == null) return null;  
@@ -85,7 +90,7 @@ public class RotateList {
             front = front.next;  
             back = back.next;  
         }  
-        ListNode rotateHead = back.next;        // 找到rotate之后的链表头  
+        ListNode rotateHead = back.next;        // 找到rotate之后的链表头
         back.next = null;           // 切开循环链表  
         return rotateHead;  
     }

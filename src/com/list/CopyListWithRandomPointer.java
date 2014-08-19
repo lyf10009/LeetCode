@@ -23,7 +23,7 @@ public class CopyListWithRandomPointer {
         
     }
     public static RandomListNode copyRandomList(RandomListNode head) {
-        //在每个节点后复制一个节点
+        //在每个节点后插入一个节点，该节点的值与前一个节点相同
         RandomListNode cur=head;
         while(cur!=null){
             RandomListNode tmp = new RandomListNode(cur.label);
@@ -32,6 +32,7 @@ public class CopyListWithRandomPointer {
             cur=tmp.next;
         }
         
+        //将偶数节点的random与奇数节点的random相同
         cur=head;
         while(cur!=null){
             if(cur.random!=null){
@@ -39,6 +40,8 @@ public class CopyListWithRandomPointer {
             }
             cur=cur.next.next;
         }
+        
+        //将偶数节点取出来，即为原链表的复制链表
         cur=head;
         RandomListNode newList = null;
         RandomListNode tmp= null;

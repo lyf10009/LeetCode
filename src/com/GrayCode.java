@@ -24,7 +24,6 @@ public class GrayCode {
         System.out.println(grayCode1(n));
     }
     
-    
     //迭代
     public static ArrayList<Integer> grayCode1(int n) {
         ArrayList<Integer> res=new ArrayList<Integer>();
@@ -36,13 +35,15 @@ public class GrayCode {
         return res;
     }
     
-    
-//    递归生成码表
-//    这种方法基于格雷码是反射码的事实，利用递归的如下规则来构造：
-//    1,1位格雷码有两个码字
-//    2,(n+1)位格雷码中的前2n个码字等于n位格雷码的码字，按顺序书写，加前缀0
-//    3,(n+1)位格雷码中的后2n个码字等于n位格雷码的码字，按逆序书写，加前缀1
-    //递归
+    /**
+     * 递归生成码表
+     * 这种方法基于格雷码是反射码的事实，利用递归的如下规则来构造：
+     * 1,1位格雷码有两个码字
+     * 2,(n+1)位格雷码中的前2n个码字等于n位格雷码的码字，按顺序书写，加前缀0
+     * 3,(n+1)位格雷码中的后2n个码字等于n位格雷码的码字，按逆序书写，加前缀1
+     * @param n
+     * @return
+     */
     public static ArrayList<Integer> grayCode(int n) {
         ArrayList<Integer> res=new ArrayList<Integer>();
         
@@ -60,7 +61,6 @@ public class GrayCode {
             res.add(1);
         }else{
             res.addAll(grayCode(n-1));
-//            int plus=(int)Math.pow(2, n-1);
             int plus=1<<(n-1);
             for(int i=plus-1;i>=0;i--){
                 res.add(res.get(i)+plus);

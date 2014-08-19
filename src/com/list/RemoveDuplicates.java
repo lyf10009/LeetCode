@@ -5,7 +5,12 @@ import java.util.Map;
 import com.bean.ListNode;
 
 public class RemoveDuplicates {
-
+    /**
+     * 去除有序链表中重复的节点
+     * For example,
+     * Given 1->1->2, return 1->2.
+     * Given 1->1->2->3->3, return 1->2->3.
+     */
 	public static void main(String[] args) {
 		ListNode l1=new ListNode(1);
 		ListNode l2=new ListNode(1);
@@ -17,34 +22,24 @@ public class RemoveDuplicates {
 		l2.next=l3;
 		l3.next=l4;
 		l4.next=l5;
-//		l5.next=l6;
-		printListNode(l1);
+		l5.next=l6;
+		ListNode.printListNode(l1);
 		ListNode res=deleteDuplicates(l1);
-		printListNode(res);
+		ListNode.printListNode(res);
 	}
     public static ListNode deleteDuplicates(ListNode head) {
         ListNode res=new ListNode(0);
-        ListNode cur=res;
-        Map<Integer,Integer> map=new HashMap<Integer,Integer>();
-        while(head!=null){
-            int val=head.val;
+        ListNode position=res,cur=head;
+        Map<Integer,Integer> map=new HashMap<Integer,Integer>();//使用map记录已有的数字
+        while(cur!=null){
+            int val=cur.val;
             if(map.get(val)==null){
-                cur.next=new ListNode(head.val);
-                
-                cur=cur.next;
+                position.next=new ListNode(cur.val);
+                position=position.next;
                 map.put(val,1);
             }
-            head=head.next;  
+            cur=cur.next;  
         }
         return res.next;
     }
-	public static void printListNode(ListNode l1){
-		if(l1==null) return;
-		for(;;){
-			System.out.print(l1.val+"-->");
-			l1=l1.next;
-			if(l1 == null) break;
-		}
-		System.out.println();
-	}
 }

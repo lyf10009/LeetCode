@@ -24,20 +24,22 @@ public class ReverseNodesinkGroup {
         l3.next = l4;
         l4.next = l5;
         ListNode.printListNode(l1);
-        ListNode.printListNode(reverseKGroup1(l1,3));
-        
+        ListNode.printListNode(reverseKGroup1(l1,2));
     }
     
     //迭代
     public static ListNode reverseKGroup(ListNode head, int k) {
         if(head==null || head.next==null) return head;
+        //遍历得到链表长度
         int length=0;
         ListNode cur=head;
         while(cur!=null){
             cur=cur.next;
             length++;
         }
+        
         if(length<k) return head;
+        
         cur=head;
         ListNode start=null,end=null,pre=null,next=null;
         int group=length/k;
@@ -71,9 +73,7 @@ public class ReverseNodesinkGroup {
         }
         if(length<k) return head;
         cur=head;
-        ListNode start=null,end=null,next=null;
-        start = cur;
-        end=cur;
+        ListNode start=head,end=head,next=null;
         for(int j=0;j<k;j++){
             next=cur.next;
             cur.next=end;

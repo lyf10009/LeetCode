@@ -23,66 +23,31 @@ public class InsertSortList {
         ListNode.printListNode(l1);
         System.out.println("排序后");
         ListNode.printListNode(insertionSortList(l1));
+        ListNode.printListNode(l1);
     }
 
-    //数据不好时，会出现超时的情况
     public static ListNode insertionSortList(ListNode head) {
-        if(head==null || head.next==null) return head;
-        ListNode preNode=head;
-        ListNode cur=head.next;
-        ListNode nextNode=null;
-        while(cur!=null){
-            nextNode=cur.next;
-            if(head.val>cur.val){
-                cur.next=head;
-                preNode.next=nextNode;
-                head=cur;
-            }else{
-                ListNode curTmp=head.next;
-                ListNode preNodeTmp=head;
-                while(curTmp!=null){
-                    if(curTmp==cur) break;
-                    if(curTmp.val>cur.val){
-                        cur.next=curTmp;
-                        preNodeTmp.next=cur;
-                        preNode.next=nextNode;
-                        break;
-                    }
-                    preNodeTmp=curTmp;
-                    curTmp=curTmp.next;
-                }
-            }
-            preNode=cur;
-            cur=nextNode;
-        }
-        return head;
-    }
-
-    //通过
-    public static ListNode insertionSortList1(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode resHead = null;
-        ListNode resTail = null;
+        ListNode resHead = null;//新表头
+        ListNode resTail = null;//新表尾
+        ListNode curr=null;
         while (head != null) {
-            ListNode curr = head;
+            curr = head;
             head = head.next;
-            //if it's the first node, we can set resHead and resTail
-            if (resHead == null) {
+            if (resHead == null) {//新链表为空时，将当前节点当做表头和表尾
                 resHead = curr;
                 resTail = curr;
                 resTail.next = null;
-            // if the current node is smaller than head, we insert before the resHead
-            } else if (curr.val <= resHead.val) {
+            } else if (curr.val <= resHead.val) {//当当前节点的值小于等于新表头时，将当前节点设置为表头
                 curr.next = resHead;
                 resHead = curr;
-            // if the current node is larger than tail, we insert after the resTail
-            } else if (curr.val >= resTail.val) {
+            } else if (curr.val >= resTail.val) {//当当前节点的值大于等于新表尾时，将当前节点设置为表尾
                 resTail.next = curr;
                 resTail = curr;
                 resTail.next = null;
-            // otherwise, when the current node's value is in the middle,   
-            // we should go through the result list to find the right insertion position
             } else {
+                //否则，当前节点应该在链表中。从新表头开始往后遍历，当遍历到下一个节点值不比它小时，节点赢插入该节点之后
+                //1-->2-->4， 3。3应该插入在2 4之间
                 ListNode findPos = resHead;
                 while (curr.val > findPos.next.val) {
                     findPos = findPos.next;

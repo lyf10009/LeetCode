@@ -11,9 +11,8 @@ public class RemoveNthNodeFromEndofList {
      * Note:
      * Given n will always be valid.
      * Try to do this in one pass.
-     * @param args
+     * 序号从1开始
      */
-    
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
@@ -29,7 +28,7 @@ public class RemoveNthNodeFromEndofList {
         ListNode.printListNode(removeNthFromEnd(l1, 5));
     }
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode cur = head;
+        ListNode cur = head;//使用两个指针来确定删除节点的位置
         ListNode tmp = head;
         int i=0;
         while(cur.next!=null){
@@ -41,7 +40,6 @@ public class RemoveNthNodeFromEndofList {
         }
         if(i==n-1){//重新设置头结点
             head = head.next;
-//            ListNode.printListNode(head);
         }else{
             tmp.next=tmp.next.next;
         }
