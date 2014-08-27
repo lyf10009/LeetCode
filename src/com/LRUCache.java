@@ -3,14 +3,25 @@ package com;
 import java.util.HashMap;
 
 public class LRUCache {
-
     /**
      * Design and implement a data structure for Least Recently Used (LRU) cache. It should support
      * the following operations: get and set. 
      * get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1. 
      * set(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, 
      *              it should invalidate the least recently used item before inserting a new item.
-     *              
+     * 
+     * LRU是Least Recently Used 近期最少使用算法。
+     * 假设 序列为 4 3 4 2 3 1 4 2
+     * 物理块有3个 则
+     * 首轮 4调入内存 4
+     * 次轮 3调入内存 3 4
+     * 之后 4调入内存 4 3
+     * 之后 2调入内存 2 4 3
+     * 之后 3调入内存 3 2 4
+     * 之后 1调入内存 1 3 2（因为最少使用的是4，所以丢弃4）
+     * 之后 4调入内存 4 1 3（原理同上）
+     * 最后 2调入内存 2 4 1
+     * 
      * 使用双向链表和map实现
      */
     public LRUCache(int capacity) {
@@ -91,10 +102,5 @@ public class LRUCache {
             this.prev = null;
             this.next = null;
         }
-    }
-
-    public static void main(String[] args) {
-
-
     }
 }

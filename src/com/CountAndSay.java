@@ -12,22 +12,18 @@ public class CountAndSay {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(countAndSay(5));
+        System.out.println(countAndSay(7));
     }
 
     public static String countAndSay(int n) {
-        if (n == 1) {
-            return "1";
-        }
-
         String s = "1";
-        StringBuffer ret = new StringBuffer();
+        StringBuilder ret = new StringBuilder();
         int cnt = 0;
-        int round = 0; // round是迭代多少次  
+        int round = 1; // round是迭代多少次  
         int i;
-        while (++round < n) {
+        while (round < n) {
             cnt = 1;
-            ret.setLength(0);
+            ret.setLength(0);//将ret清空 ret.delete(0,ret.length());
             for (i = 1; i < s.length(); i++) {
                 if (s.charAt(i) == s.charAt(i - 1)) { // 重复的值，继续计数  
                     cnt++;
@@ -37,8 +33,9 @@ public class CountAndSay {
                 }
             }
             ret.append(cnt).append(s.charAt(i - 1));
-            s = ret.toString(); // 更新s  
+            s = ret.toString(); // 更新s
+            round++;
         }
-        return ret.toString();
+        return s;
     }
 }

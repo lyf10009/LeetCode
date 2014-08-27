@@ -1,7 +1,5 @@
 package com.tree;
 
-import java.util.Arrays;
-
 import com.bean.ListNode;
 import com.bean.TreeNode;
 

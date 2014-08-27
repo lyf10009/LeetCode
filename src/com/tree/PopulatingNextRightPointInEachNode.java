@@ -23,7 +23,7 @@ public class PopulatingNextRightPointInEachNode {
         t1.right=t3;
         t2.left=t4;
         t2.right=t5;
-//        t3.left=t6;
+        t3.left=t6;
         t3.right=t7;
         
 //        connect(t1);
@@ -43,26 +43,26 @@ public class PopulatingNextRightPointInEachNode {
      *       / \  / \
      *      4  5  6  7
      * After calling your function, the tree should look like:
-     *          1 -> NULL
+     *         1 -> NULL
      *        /  \
-     *      2 -> 3 -> NULL
-     *     / \  / \
-     *    4->5->6->7 -> NULL
+     *       2 -> 3 -> NULL
+     *      / \  / \
+     *     4->5->6->7 -> NULL
      */
     public static void connect(TreeLinkNode root) {
         if(root==null) return;
         Queue<TreeLinkNode> queue=new LinkedList<TreeLinkNode>();
         queue.offer(root);
-        int floor=0;
+        int floor=0;//层数
         int num=1;
         for(int i=0;i<num;i++){
             TreeLinkNode tmp=queue.poll();
-            if(num-i==1){
+            if(num-i==1){//一层的最后个节点
                 System.out.println(tmp.val);
                 tmp.next=null;
                 if(tmp.left!=null){
                     floor++;
-                    num=(int)Math.pow(2,floor);
+                    num=(int)Math.pow(2,floor);//满树，floor层的节点个数
                     i=-1;
                 }
             }else{
@@ -84,7 +84,6 @@ public class PopulatingNextRightPointInEachNode {
         if(root.right!=null){
             root.right.next=root.next==null?null:root.next.left;
         }
-        
         if(root.left!=null) connect1(root.left);
         if(root.right!=null) connect1(root.right);
     }

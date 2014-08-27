@@ -3,10 +3,9 @@ package com;
 public class AddTwoNumber {
     /**
      * 不使用四则运算，计算两个数的和
-     * @param args
      */
     public static void main(String[] args) {
-        int num1=123;
+        int num1=-123;
         int num2=234;
         System.out.println(add(num1, num2));
     }

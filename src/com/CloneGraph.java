@@ -23,8 +23,8 @@ public class CloneGraph {
         Map<UndirectedGraphNode, UndirectedGraphNode> map =
                 new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
         UndirectedGraphNode retClone = new UndirectedGraphNode(node.label); // 根节点的复制
-        map.put(node, retClone); // 把根节点和其复制品放入ht
-        queue.offer(node); //添加入队列
+        map.put(node, retClone); // 把根节点和其复制品放入map
+        queue.offer(node); //将跟节点添加入队列
 
         while (!queue.isEmpty()) {
             UndirectedGraphNode cur = queue.poll(); // 当前处理对象

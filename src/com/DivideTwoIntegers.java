@@ -1,30 +1,23 @@
 package com;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
 public class DivideTwoIntegers {
     /**
      * Divide two integers without using multiplication, division and mod operator.
-     * @param args
      */
     public static void main(String[] args) {
         int dividend = -1212312;
         int divisor = -1;
-        System.out.println(dividend/divisor);
-        System.out.println(divide(dividend,divisor));
+        System.out.println(dividend+" / "+divisor+" = " + divide(dividend,divisor));
     }
     public static int divide(int dividend, int divisor) {
         if(dividend == 0 || divisor == 0) return 0;
         if(divisor == 1) return dividend;
         if(divisor == -1) return 0-dividend;
         
-        boolean flag= true;//判断结果符号
-        if(dividend>0&&divisor<0 || dividend<0&&divisor>0) flag = false;
-        
         int res=0;
-        long a = Math.abs((long)dividend);//防止溢出越界
+        long a = Math.abs((long)dividend);//防止取绝对值时溢出越界，设置为long型
         long b = Math.abs((long)divisor);
-        if(b>a) return 0;
+        if(b>a) return res;//若被除数比除数小，直接返回0
         
         int count=0;
         long sum=0;
@@ -39,6 +32,8 @@ public class DivideTwoIntegers {
             res+=count;
         }
         
+        boolean flag= true;//判断结果符号
+        if(dividend>0&&divisor<0 || dividend<0&&divisor>0) flag = false;
         if(!flag){
             res = 0-res;
         }

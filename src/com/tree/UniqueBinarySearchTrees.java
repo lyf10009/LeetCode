@@ -21,6 +21,7 @@ public class UniqueBinarySearchTrees {
     public static void main(String[] args) {
         System.out.println(numTreesI1(5));
         System.out.println(numTreesI2(5));
+        System.out.println(numTreesII(5));
     }
     
     //ตÝน้  f(n)=2(2n-1)f(n-1)/(n+1)

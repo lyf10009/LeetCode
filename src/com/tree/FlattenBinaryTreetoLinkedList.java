@@ -1,14 +1,11 @@
 package com.tree;
 
-import java.util.Arrays;
 import java.util.Stack;
-
 import com.bean.TreeNode;
 
 public class FlattenBinaryTreetoLinkedList {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         TreeNode tree1=new TreeNode(1);
         TreeNode tree2=new TreeNode(2);
         TreeNode tree3=new TreeNode(3);
@@ -52,27 +49,6 @@ public class FlattenBinaryTreetoLinkedList {
      * @param root
      */
     public static void flatten(TreeNode root) {
-        //先遍历得到先序的数组，在遍历数组
-//        if(root == null)  return;  
-//        ArrayList<Integer> res=new ArrayList<Integer>();
-//        Stack<TreeNode> st = new Stack<TreeNode>();
-//        st.push(root);
-//        while(!st.isEmpty()){  
-//            TreeNode cur = st.peek();  
-//            res.add(cur.val);  
-//            st.pop();
-//            if(cur.right != null)  st.push(cur.right);  
-//            if(cur.left != null)  st.push(cur.left);  
-//        }  
-//        st = null;
-//        root.val=res.get(0);
-//        root.left=null;
-//        TreeNode curNode=root;
-//        for(int i=1;i<res.size();i++){
-//            TreeNode tmp=new TreeNode(res.get(i));
-//            curNode.right=tmp;
-//            curNode=curNode.right;
-//        }
         if(root == null)  return;  
         Stack<TreeNode> stack = new Stack<TreeNode>();  
         stack.push(root);  

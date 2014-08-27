@@ -2,8 +2,6 @@ package com;
 
 import java.util.Arrays;
 
-import com.list.PartitionList;
-
 public class MoreThanHalfNum {
     /**
      * 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数
@@ -12,12 +10,13 @@ public class MoreThanHalfNum {
      */
     public static void main(String[] args) {
         int[] num={1,2,3,2,2,2,5,4,2};
-        System.out.println(findNumMoreThanHalf1(num));
+        System.out.println(findNumMoreThanHalf0(num));
     }
     //先排序，再找 O(nlogn)
     public static int findNumMoreThanHalf0(int[] num){
-        Arrays.sort(num);
+        Arrays.sort(num);//排序
         int len=num.length;
+//        return num[len/2];//返回中间的中位数
         int size=0;
         int pre=num[0];
         for(int i:num){
@@ -34,7 +33,7 @@ public class MoreThanHalfNum {
         return 1;
     }
     
-    //O(n)
+    //O(n),所求的那个数一定就是中位数
     public static int findNumMoreThanHalf1(int[] num){
         int middle=num.length>>1;
         int start=0,end=num.length-1;

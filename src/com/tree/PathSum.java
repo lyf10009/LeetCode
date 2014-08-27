@@ -1,9 +1,6 @@
 package com.tree;
 
 import java.util.ArrayList;
-
-import javax.annotation.Resource;
-
 import com.bean.TreeNode;
 
 public class PathSum {
@@ -73,6 +70,6 @@ public class PathSum {
         }  
         sumAll(root.left,sum-root.val, list, res);
         sumAll(root.right,sum-root.val, list, res);
-        list.remove(list.size() - 1);  
+        list.remove(list.size() - 1);  //删除最后一个节点，还原结果列表
     } 
 }

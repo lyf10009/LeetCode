@@ -25,7 +25,7 @@ public class MaxPointonLine {
         int max=1;
         for(int i=0;i<points.length-1;i++){
             Point p1=points[i];
-            int sameNum=1;
+            int sameNum=1;//重复点个数
             int val=0;
             Map<Double, Integer> map=new HashMap<Double, Integer>();//斜率vs个数
             for(int j=0;j<points.length;j++){

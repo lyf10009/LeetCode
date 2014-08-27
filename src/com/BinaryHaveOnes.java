@@ -3,7 +3,6 @@ package com;
 public class BinaryHaveOnes {
     /**
      * 判断一个数的二进制数中包含多少个"1"
-     * @param args
      */
     public static void main(String[] args) {
         int n=1024;

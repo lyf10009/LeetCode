@@ -8,6 +8,7 @@ public class GenerateParentheses {
      * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
      * For example, given n = 3, a solution set is:
      * "((()))", "(()())", "(())()", "()(())", "()()()"
+     * dfs
      */
     
     public static void main(String[] args) {
@@ -17,16 +18,17 @@ public class GenerateParentheses {
     private static List<String> res;
     public static List<String> generateParenthesis(int n) {
         res = new ArrayList<String>();
-        generate("", 0, 0, n);
-//        generate("", n,0);
+        generate("", n,0);
         
-//        StringBuilder sBuilder = new StringBuilder();
-//        generate(sBuilder, n, 0);
+        generate("", 0, 0, n);
+        
+        StringBuilder sBuilder = new StringBuilder();
+        generate(sBuilder, n, 0);
         return res;
     }
     //404ms
     private static void generate(String str, int n, int num){
-        System.out.println(str);
+//        System.out.println(str);
         if(num<0) return;
         if(str.length() == 2 * n){
             if(num == 0){
@@ -39,7 +41,7 @@ public class GenerateParentheses {
     }
     //412ms
     private static void generate(String str, int left, int right, int n){
-        System.out.println(str);
+//        System.out.println(str);
         if(left == n){
             for(int i=0;i<n-right;i++){
                 str+=")";
@@ -55,7 +57,7 @@ public class GenerateParentheses {
     
     //428ms
     private static void generate(StringBuilder sBuilder, int n, int num){
-        System.out.println(sBuilder);
+//        System.out.println(sBuilder);
         if(num<0) return;
         if(sBuilder.length() == 2 * n){
             if(num == 0){
@@ -63,9 +65,9 @@ public class GenerateParentheses {
             }
         }else{
             generate(sBuilder.append("("), n, num+1);
-            sBuilder.deleteCharAt(sBuilder.length()-1);
+            sBuilder.deleteCharAt(sBuilder.length()-1);//还原
             generate(sBuilder.append(")"), n, num-1);
-            sBuilder.deleteCharAt(sBuilder.length()-1);
+            sBuilder.deleteCharAt(sBuilder.length()-1);//还原
         }
     }
 }

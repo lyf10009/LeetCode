@@ -6,21 +6,21 @@ import java.util.List;
 public class NQueens {
 
     public static void main(String[] args) {
-//        solveNQueens(4);
-        nQueens(4);
-        for (String[] arr : res) {
-            for (String tmp : arr) {
-                System.out.println(tmp);
-            }
-            System.out.println("---------------------------");
-        }
+        solveNQueens(4);
+//        nQueens(4);
+//        for (String[] arr : res) {
+//            for (String tmp : arr) {
+//                System.out.println(tmp);
+//            }
+//            System.out.println("---------------------------");
+//        }
     }
 
     //方法一，700ms
-    static List<String[]> res;
+    static List<String[]> res;//结果集
     public static List<String[]> solveNQueens(int n) {
         res = new ArrayList<String[]>();
-        List<Integer> nums = new ArrayList<Integer>();
+        List<Integer> nums = new ArrayList<Integer>();//存储的是解答方案。例如，nums[row]=index,代表第row行的index列为"Q"
         for (int i = 0; i < n; i++) {
             nums.add(i);
         }
@@ -28,17 +28,17 @@ public class NQueens {
         return res;
     }
     private static void permutationHelper(List<Integer> nums, int index, int n) {
-        if (index == n) {
-            boolean flag = true;
+        if (index == n) {//index=n，说明已遍历一遍，需要检查这种方案是否可行。
+            boolean flag = true;//flag为真，则可以插入结果集
             for (int i = 0; i < n && flag; i++) {
                 for (int j = i + 1; j < n; j++) {
-                    if ((j - i) == Math.abs(nums.get(j) - nums.get(i))) {
+                    if ((j - i) == Math.abs(nums.get(j) - nums.get(i))) {//说明两行的 Q 在同一条斜线上
                         flag = false;
                         break;
                     }
                 }
             }
-            if (flag) {
+            if (flag) {//flag=true，说明这种方案可行，将方案解析成字符串矩阵的形式，插入结果集中
                 String[] tmpList = new String[n];
                 for (int i = 0; i < n; i++) {
                     String row = getRow(nums.get(i), n);
@@ -47,12 +47,14 @@ public class NQueens {
                 res.add(tmpList);
             }
         }
+        
         for (int i = index; i < n; i++) {
             swap(nums, index, i);
             permutationHelper(nums, index + 1, n);
-            swap(nums, index, i);
+            swap(nums, index, i);//还原
         }
     }
+    //获得一行，index对应的点是"Q"，其他的是"."
     private static String getRow(int index, int n) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
@@ -64,6 +66,7 @@ public class NQueens {
         }
         return sb.toString();
     }
+    //交换list中的两个值
     private static void swap(List<Integer> nums, int i, int j) {
         int tmp = nums.get(i);
         nums.set(i, nums.get(j));

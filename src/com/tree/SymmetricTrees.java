@@ -39,10 +39,10 @@ public class SymmetricTrees {
         tree1.right=tree3;
         tree2.right=tree4;
         tree3.left=tree5;
-//        tree4.right=tree6;
+        tree4.right=tree6;
         tree4.left=tree7;
         tree5.right=tree8;
-//        tree5.left=tree9;
+        tree5.left=tree9;
         
         System.out.println(isSymmetric1(tree1));
         System.out.println(isSymmetric2(tree1));

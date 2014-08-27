@@ -62,7 +62,6 @@ public class BinaryTreeMaximumPathSum {
             max = value;  
         }  
         //·µ»ØÖµ  
-        //return max of (root.val, root.val + lmax, root.val + rmax)  
         return  Math.max(root.val,Math.max(root.val + lmax, root.val + rmax));  
     }
 }

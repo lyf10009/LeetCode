@@ -2,8 +2,6 @@ package com;
 
 import java.util.Stack;
 
-import com.sun.corba.se.spi.orbutil.fsm.State;
-
 public class EvaluateReversePolishNotation {
 
     public static void main(String[] args) {
@@ -16,6 +14,7 @@ public class EvaluateReversePolishNotation {
      * Some examples:
      *   ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
      *   ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
+     * 遇到数字就入栈，遇到运算符号就出栈两个数运算  
      */
     public static int evalRPN(String[] tokens) {
         Stack<Integer> stack=new Stack<Integer>();

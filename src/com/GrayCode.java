@@ -16,7 +16,7 @@ public class GrayCode {
      * Note:
      * For a given n, a gray code sequence is not uniquely defined.
      * For example, [0,2,3,1] is also a valid gray code sequence according to the above definition.
-     * @param args
+     * 生成格雷码
      */
     public static void main(String[] args) {
         int n=0;
@@ -29,7 +29,7 @@ public class GrayCode {
         ArrayList<Integer> res=new ArrayList<Integer>();
         int size=1<<n;//当n=0时，返回 1 !!!
         for(int i=0;i<size;i++){
-            int gCode = i^(i>>1);
+            int gCode = i^(i>>1);//格雷码生成规则
             res.add(gCode);
         }
         return res;
@@ -46,12 +46,10 @@ public class GrayCode {
      */
     public static ArrayList<Integer> grayCode(int n) {
         ArrayList<Integer> res=new ArrayList<Integer>();
-        
         if(n==0) {
             res.add(0);
             return res;
         }
-        
         grayCode(n, res);
         return res;
     }

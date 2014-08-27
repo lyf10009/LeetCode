@@ -20,7 +20,6 @@ public class SumRoottoLeafNumbers {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         TreeNode tree1=new TreeNode(1);
         TreeNode tree2=new TreeNode(2);
         TreeNode tree3=new TreeNode(3);

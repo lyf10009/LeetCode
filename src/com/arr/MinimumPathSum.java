@@ -1,14 +1,10 @@
 package com.arr;
 
-import java.util.Arrays;
-
 public class MinimumPathSum {
-
     /**
      * Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right 
      * which minimizes the sum of all numbers along its path.
      * Note: You can only move either down or right at any point in time.
-     * @param args
      */
     public static void main(String[] args) {
         int[][] grid={{1,1},{2,4}};
@@ -35,7 +31,6 @@ public class MinimumPathSum {
                 }  
             }  
         }  
-          
         return grid[grid.length - 1][grid[0].length - 1];
     }
 }
