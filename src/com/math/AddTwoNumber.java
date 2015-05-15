@@ -1,4 +1,4 @@
-package com;
+package com.math;
 
 public class AddTwoNumber {
     /**

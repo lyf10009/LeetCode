@@ -1,4 +1,4 @@
-package com;
+package com.math;
 
 public class PalindromeNumber {
     //回文数，例如：1,2,121...
