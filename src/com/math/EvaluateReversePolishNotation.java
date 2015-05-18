@@ -1,4 +1,4 @@
-package com;
+package com.math;
 
 import java.util.Stack;
 
