@@ -1,9 +1,9 @@
 package com.str;
 
-public class TitleToNumber {
+public class ExcelTitleToNumber {
 
 	public static void main(String[] args) {
-		String s="ABC";
+		String s="AZ";
 		System.out.println(titleToNumber(s));
 	}
     public static int titleToNumber(String s) {
